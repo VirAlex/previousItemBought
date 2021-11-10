@@ -53,7 +53,9 @@ const Hits = ({ hits }) => {
                   <h3>
                     <Highlight hit={hit} attribute="name" />
                   </h3>
-                  {/* <p>{hit.BRAND}</p> */}
+                  <div className="button">
+                    <button className="button-buy-me">Buy Me</button>
+                  </div>
                 </div>
               </div>
             </motion.li>
