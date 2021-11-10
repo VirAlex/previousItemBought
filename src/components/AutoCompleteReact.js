@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { connectAutoComplete } from "react-instantsearch-dom";
+import { connectAutoComplete, Configure } from "react-instantsearch-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getArticle } from "../actions/clickedArticle";
@@ -19,11 +19,12 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             value={clickedArticle ? clickedArticle : currentRefinement}
             onChange={(event) => {
               console.log(event);
+              dispatch(getArticle(""));
               refine(event.currentTarget.value);
             }}
             onClick={() => {
               console.log("CLICK", click);
-              setClick(!click);
+              setClick(true);
             }}
           />
         </li>
@@ -33,6 +34,8 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             key={hit.objectID}
             onClick={(e) => {
               dispatch(getArticle(hit.name));
+              refine(hit.name);
+              setClick(false);
             }}
           >
             {hit.name}

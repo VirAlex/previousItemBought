@@ -12,7 +12,7 @@ export function Autocomplete(props) {
     }
     const recentSearchesPlugin = createLocalStorageRecentSearchesPlugin({
       key: "RECENT_SEARCH",
-      limit: 5
+      limit: 3
     });
 
     const search = autocomplete({
