@@ -1,6 +1,7 @@
 import React from "react";
 import { Highlight, connectHits } from "react-instantsearch-dom";
 import { useDispatch } from "react-redux";
+import { getArticleCart } from "../actions/getCart";
 
 import { motion, AnimateSharedLayout } from "framer-motion";
 
@@ -15,6 +16,7 @@ const Hits = ({ hits }) => {
       },
     },
   };
+  const dispatch = useDispatch();
   return (
     <AnimateSharedLayout>
       <div className="hits-wrapper">
@@ -54,7 +56,15 @@ const Hits = ({ hits }) => {
                     <Highlight hit={hit} attribute="name" />
                   </h3>
                   <div className="button">
-                    <button className="button-buy-me">Buy Me</button>
+                    <button
+                      className="button-buy-me"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(getArticleCart(hit));
+                      }}
+                    >
+                      BUY ME
+                    </button>
                   </div>
                 </div>
               </div>

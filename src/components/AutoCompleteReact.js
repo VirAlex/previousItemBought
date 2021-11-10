@@ -1,11 +1,15 @@
+import { useState } from "react";
+
 import { connectAutoComplete } from "react-instantsearch-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getCart } from "../actions/clickedArticle";
+import { getArticle } from "../actions/clickedArticle";
 
 const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const { clickedArticle } = useSelector((state) => state.getArticle);
+  const [click, setClick] = useState(false);
   const dispatch = useDispatch();
+  console.log("CLICK", click);
   return (
     <div>
       <ul className="autocomplete-contain">
@@ -14,17 +18,21 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             type="search"
             value={clickedArticle ? clickedArticle : currentRefinement}
             onChange={(event) => {
-              console.log(event)
+              console.log(event);
               refine(event.currentTarget.value);
+            }}
+            onClick={() => {
+              console.log("CLICK", click);
+              setClick(!click);
             }}
           />
         </li>
         {hits.map((hit) => (
           <li
-            className="autocomplete-contain__item"
+            className={`homepage-wrapper ${click ? "display" : "remove"}`}
             key={hit.objectID}
             onClick={(e) => {
-              dispatch(getCart(hit.name));
+              dispatch(getArticle(hit.name));
             }}
           >
             {hit.name}
