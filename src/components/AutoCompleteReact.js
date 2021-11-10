@@ -24,7 +24,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             }}
             onClick={() => {
               console.log("CLICK", click);
-              setClick(true);
+              setClick(!click);
             }}
           />
         </li>
