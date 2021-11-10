@@ -3,24 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.5.0",
+    "@algolia/autocomplete-plugin-recent-searches": "^1.5.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "algoliasearch": "^4.11.0",
+    "framer-motion": "^4.1.17",
+    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-instantsearch-dom": "^6.15.0",
+    "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {

@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(244, 244, 249);
+  color: rgb(65, 65, 65);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 640px;
+  width: 100%;
+}
+
+.autocomplete-container {
+  display: flex;
+  justify-content: space-around;
+  .autocomplete-contain {
+    background-color: red;
+    list-style: none;
+    input {
+      border: none;
+      width: 300px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .autocomplete-contain__list {
+      background-color: green;
+      text-align: center;
+    }
+    .autocomplete-contain__item {
+      background-color: yellowgreen;
+    }
+  }
+}
+
+.hits-wrapper {
+  margin: 5rem auto;
+  .hits-list {
+    list-style: none;
+    margin: 0 auto;
+    display: grid;
+    align-items: stretch;
+    width: 70%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    .hit-list {
+      border: 1px solid grey;
+      padding: 1rem;
+      .image-wrapper {
+        text-align: center;
+        img {
+          max-width: 200px;
+        }
+      }
+      .infos-price {
+
+      }
+    }
+  }
+}
+
+.ais-Pagination {
+  .ais-Pagination-list {
+    display: flex;
+    justify-content: center;
+    li {
+      list-style: none;
+      text-decoration: none;
+      a {
+        text-decoration: none;
+        border: 1px solid grey;
+        padding: 0.8rem;
+        color: grey;
+        margin: 0 1rem;
+        border-radius: 8px;
+      }
+      span {
+        text-decoration: none;
+        border: 1px solid grey;
+        padding: 0.8rem;
+        color: grey;
+        margin: 0 1rem;
+        border-radius: 8px;
+      }
+    }
+  }
+}
