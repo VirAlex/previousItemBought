@@ -30,7 +30,7 @@ body {
       width: 300px;
       height: 40px;
       border-radius: 8px;
-      background-color: rgba(65, 65, 65, 0.3)
+      background-color: rgba(65, 65, 65, 0.3);
     }
     .autocomplete-contain__list {
       text-align: center;
@@ -38,7 +38,7 @@ body {
     .autocomplete-contain__item {
       cursor: pointer;
     }
-    .homepage-wrapper{
+    .homepage-wrapper {
       cursor: pointer;
       font-size: 0.9rem;
     }
@@ -64,6 +64,9 @@ body {
     .hit-list {
       border: 1px solid grey;
       padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: end;
       .image-wrapper {
         text-align: center;
         img {

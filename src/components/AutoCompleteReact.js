@@ -19,12 +19,13 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             value={clickedArticle ? clickedArticle : currentRefinement}
             onChange={(event) => {
               console.log(event);
+              setClick(!click);
               dispatch(getArticle(""));
               refine(event.currentTarget.value);
             }}
             onClick={() => {
-              console.log("CLICK", click);
-              setClick(!click);
+              // console.log("CLICK", click);
+              // setClick(!click);
             }}
           />
         </li>
