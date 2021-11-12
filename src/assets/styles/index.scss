@@ -74,6 +74,12 @@ body {
         }
       }
       .infos {
+        h3 {
+          width: 250px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         .button {
           display: flex;
           justify-content: center;
@@ -147,11 +153,11 @@ body {
   overflow-x: hidden;
 
   .searchBox-wrapper {
-      form {
-          width: 90%;
-      }
+    form {
+      width: 90%;
+    }
   }
-  .modal-content__titles-cross{
+  .modal-content__titles-cross {
     display: flex;
     justify-content: space-between;
   }
