@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { connectAutoComplete, Configure } from "react-instantsearch-dom";
+import { connectAutoComplete } from "react-instantsearch-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getArticle } from "../actions/clickedArticle";

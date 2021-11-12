@@ -10,12 +10,13 @@ import { Configure, Pagination } from "react-instantsearch-dom";
 import Modal from "./components/CartModal";
 
 import { showModal } from "./actions/showModal";
+import { getArticle } from "./actions/clickedArticle";
 
 const appId = "latency";
 const apiKey = "6be0576ff61c053d5f9a3225e2a90f76";
 const searchClient = algoliasearch(appId, apiKey);
 
-function App() {
+function App({ refine }) {
   const { cart } = useSelector((state) => state.getCart);
   const dispatch = useDispatch();
   const { modalShow } = useSelector((state) => state.getModal);
@@ -25,7 +26,11 @@ function App() {
       <div className="app-container">
         {modalShow ? <Modal /> : ""}
         <div className="autocomplete-container">
-          <h1>Recent Articles Buy</h1>
+          <h1 onClick={()=>{
+            dispatch(showModal(false));
+            dispatch(getArticle(''));
+            refine('')
+          }}>Recent Articles Buy</h1>
           <CustomAutocomplete />
           <div className="cart-number">
             <svg
