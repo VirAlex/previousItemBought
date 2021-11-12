@@ -9,7 +9,6 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const { clickedArticle } = useSelector((state) => state.getArticle);
   const [click, setClick] = useState(false);
   const dispatch = useDispatch();
-  console.log("CLICK", click);
   return (
     <div>
       <ul className="autocomplete-contain">
@@ -18,7 +17,6 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             type="search"
             value={clickedArticle ? clickedArticle : currentRefinement}
             onChange={(event) => {
-              console.log(event);
               setClick(true);
               dispatch(getArticle(""));
               refine(event.currentTarget.value);

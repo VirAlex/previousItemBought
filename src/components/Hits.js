@@ -49,7 +49,7 @@ const Hits = ({ hits }) => {
                     <use fill="#FFF" stroke="#3d3d3d" strokeWidth="1.9"></use>
                   </g>
                 </svg> */}
-                  <p className="weight__text">{hit.price}</p>
+                  <p className="weight__text">${hit.price}</p>
                 </div>
                 <div className="infos">
                   <h3>
