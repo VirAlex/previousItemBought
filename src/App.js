@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getAlgoliaResults } from "@algolia/autocomplete-js";
 import { CustomAutocomplete } from "./components/AutoCompleteReact";
 import algoliasearch from "algoliasearch";
@@ -7,6 +7,7 @@ import { ProductItem } from "./components/ProductItem";
 import { useDispatch, useSelector } from "react-redux";
 import { CustomHits } from "./components/Hits";
 import { Configure, Pagination } from "react-instantsearch-dom";
+import Modal from "./components/CartModal";
 
 import { getArticleCart } from "./actions/getCart";
 
@@ -14,17 +15,23 @@ const appId = "latency";
 const apiKey = "6be0576ff61c053d5f9a3225e2a90f76";
 const searchClient = algoliasearch(appId, apiKey);
 
+
 function App() {
   const { cart } = useSelector((state) => state.getCart);
   const dispatch = useDispatch();
+  const [cartModal, setCartModal] = useState(false);
   return (
     <>
       <div className="app-container">
+        {cartModal ? <Modal /> : ""}
         <div className="autocomplete-container">
           <h1>Recent Articles Buy</h1>
           <CustomAutocomplete />
           <div className="cart-number">
             <svg
+              onClick={() => {
+                setCartModal(true);
+              }}
               width="30"
               height="38"
               viewBox="0 0 30 38"
