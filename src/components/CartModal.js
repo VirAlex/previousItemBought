@@ -35,20 +35,6 @@ const CartModal = () => {
               </div>
               <div className="infos-price">
                 <div className="weight__wrapper">
-                  {/* <svg viewBox="0 0 35 23" className="Hit-list__icon">
-                  <path
-                    id="asda_fav_list_1"
-                    d="M7.02 2C7 2.344 7 2.685 7 3h6c0-.315 0-.656-.02-1H18c1 0 2 .784 2 1.667v17.667C20 22.167 19 23 18 23H2c-1 0-2-.833-2-1.666V3.667C0 2.833 1 2 2 2h5.02zM12 2H8c0-1 1-2 2-2s2 1 2 2zM7 17v2h10v-2H7zm-4-5v2h2v-2H3zm0-5v2h2V7H3zm0 10v2h2v-2H3zm4-5v2h10v-2H7zm0-5v2h10V7H7z"
-                  ></path>
-                  <path
-                    id="asda_fav_list_2"
-                    d="M24 21c-1.818-1.8-10-7.65-10-12.6C14 5.7 15.818 3 19 3c2 0 4 .82 5 3.295C25 3.82 27 3 29 3c3.182 0 5 2.7 5 5.4 0 4.95-8.182 10.8-10 12.6z"
-                  ></path>
-                  <g fill="none">
-                    <use fill="#3d3d3d"></use>
-                    <use fill="#FFF" stroke="#3d3d3d" strokeWidth="1.9"></use>
-                  </g>
-                </svg> */}
                   <p className="weight__text">{hit.price}</p>
                 </div>
                 <div className="infos">
@@ -71,9 +57,30 @@ const CartModal = () => {
             </dispatchEvent>
           ))}
         </ul>
+        <button
+          onClick={() => {
+            setItemsLocalStorage(cart);
+          }}
+        >
+          Click
+        </button>
       </div>
     </div>
   );
 };
 
 export default CartModal;
+
+// We want to take the cart from our store
+const setItemsLocalStorage = (cart) => {
+  console.log("Cart", cart);
+  // We want to check our local storage
+  const previousPurchases = localStorage.getItem("purchaseArticles");
+  console.log(previousPurchases);
+  // If there are purchases in our local storage parse them in JSON if not
+  const parsedArray = previousPurchases ? JSON.parse(previousPurchases) : [];
+  // We want to create a new array with previous purchases and our cart.
+  const allPurchases = [...parsedArray, cart].flat();
+  // We want to store our cart and previous purchases in our local storage
+  localStorage.setItem("purchaseArticles", JSON.stringify(allPurchases));
+};

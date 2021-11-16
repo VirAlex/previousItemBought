@@ -7,7 +7,10 @@ import { ProductItem } from "./components/ProductItem";
 import { useDispatch, useSelector } from "react-redux";
 import { CustomHits } from "./components/Hits";
 import { Configure, Pagination } from "react-instantsearch-dom";
+// Import components
 import Modal from "./components/CartModal";
+import PreviousPurchasesCarousel from "./components/PreviousPurchasesCarousel"
+
 
 import { showModal } from "./actions/showModal";
 import { getArticle } from "./actions/clickedArticle";
@@ -23,6 +26,7 @@ function App({ refine }) {
 
   return (
     <>
+    <PreviousPurchasesCarousel/>
       <div className="app-container">
         {modalShow ? <Modal /> : ""}
         <div className="autocomplete-container">

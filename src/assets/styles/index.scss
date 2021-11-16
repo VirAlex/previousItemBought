@@ -162,3 +162,12 @@ body {
     justify-content: space-between;
   }
 }
+
+.hits-list-modal {
+  flex-wrap: nowrap;
+  display: -webkit-box;
+  overflow-x: scroll;
+  padding: 1 rem 0 rem;
+  list-style-type: none;
+  display: flex !important;
+}
