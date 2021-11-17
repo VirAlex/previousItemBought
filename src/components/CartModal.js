@@ -41,15 +41,15 @@ const CartModal = () => {
               onClick={() => {}}
             >
               <div className="image-wrapper">
-                <img src={hit.image} alt="" />
+                <img src={hit.IMAGE} alt="" />
               </div>
               <div className="infos-price">
                 <div className="weight__wrapper">
-                  <p className="weight__text">{hit.price}</p>
+                  <p className="weight__text">{hit.PRICE_INT}</p>
                 </div>
                 <div className="infos">
                   <h3>
-                    <Highlight hit={hit} attribute="name" />
+                    <Highlight hit={hit} attribute="DISPLAY_NAME" />
                   </h3>
                   <div className="button">
                     {/* <button

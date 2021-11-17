@@ -28,9 +28,9 @@ const store = createStore(
 
 
 //CHANGE ME IF USING NEW INDEX
-window.appID = "latency";
-window.key = "6be0576ff61c053d5f9a3225e2a90f76";
-window.index = "instant_search";
+window.appID = "T28VFYO9RS";
+window.key = "d51558b9d3daea110f05e8c1a7b65253";
+window.index = "Asda_v3";
 
 const searchClient = algoliasearch(window.appID, window.key);
 

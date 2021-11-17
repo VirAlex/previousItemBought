@@ -14,6 +14,7 @@ const PreviousPurchasesCarousel = () => {
     <div>
       <div className="hits-wrapper">
         <h3 className="title-carousel">Welcome Back Alex</h3>
+        <h3 className="title-carousel">Your previous purchases</h3>
         <ul className="hits-list hits-list-modal">
           {previousPurchases
             ? previousPurchases.map((item) => (
@@ -22,14 +23,14 @@ const PreviousPurchasesCarousel = () => {
                   dispatch(setPurchaseArticle(item))
                 }}>
                   <div className="image-wrapper">
-                    <img src={item.image} alt="" />
+                    <img src={item.IMAGE} alt="" />
                   </div>
                   <div className="infos-price">
                     <div className="infos">
                       <h3>
-                        <Highlight hit={item} attribute="name" />
+                        <Highlight hit={item} attribute="DISPLAY_NAME" />
                       </h3>
-                      <p>{item.price !== null ? `$ ${item.price}` : ""}</p>
+                      <p>{item.PRICE_INT !== null ? `$ ${item.PRICE_INT}` : ""}</p>
                     </div>
                   </div>
                 </li>

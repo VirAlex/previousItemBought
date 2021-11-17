@@ -32,12 +32,12 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             className={`homepage-wrapper ${click ? "display" : "remove"}`}
             key={hit.objectID}
             onClick={(e) => {
-              dispatch(getArticle(hit.name));
-              refine(hit.name);
+              dispatch(getArticle(hit.DISPLAY_NAME));
+              refine(hit.DISPLAY_NAME);
               setClick(false);
             }}
           >
-            {hit.name}
+            {hit.DISPLAY_NAME}
           </li>
         ))}
       </ul>

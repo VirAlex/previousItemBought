@@ -32,7 +32,7 @@ const Hits = ({ hits }) => {
               onClick={() => {}}
             >
               <div className="image-wrapper">
-                <img src={hit.image} alt="" />
+                <img src={hit.IMAGE} alt="" />
               </div>
               <div className="infos-price">
                 <div className="weight__wrapper">
@@ -50,11 +50,11 @@ const Hits = ({ hits }) => {
                     <use fill="#FFF" stroke="#3d3d3d" strokeWidth="1.9"></use>
                   </g>
                 </svg> */}
-                  <p className="weight__text">${hit.price}</p>
+                  <p className="weight__text">£{hit.PRICE_INT}</p>
                 </div>
                 <div className="infos">
                   <h3>
-                    <Highlight hit={hit} attribute="name" />
+                    <Highlight hit={hit} attribute="DISPLAY_NAME" />
                   </h3>
                   <div className="button">
                     <button
