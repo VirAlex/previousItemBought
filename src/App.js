@@ -73,7 +73,7 @@ function App({ refine }) {
         {previousArticleClick ? (
           <Configure
             hitsPerPage={8}
-            filters={`categories.lvl0:'${previousArticleClick.categories.lvl0}'`}
+            filters={`categories.lvl1:'${previousArticleClick.categories.lvl1}'`}
           />
         ) : (
           <Configure hitsPerPage={8} />
