@@ -20,6 +20,7 @@ const Hits = ({ hits }) => {
   return (
     <AnimateSharedLayout>
       <div className="hits-wrapper">
+      <h3 className="title-carousel">Our Products</h3>
         <ul className="hits-list">
           {hits.map((hit) => (
             <motion.li

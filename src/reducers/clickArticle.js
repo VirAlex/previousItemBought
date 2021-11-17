@@ -1,5 +1,6 @@
 const initState = {
   clickedArticle: "",
+  previousArticleClick: "",
 };
 
 const getArticle = (state = initState, action) => {
@@ -8,6 +9,11 @@ const getArticle = (state = initState, action) => {
       return {
         ...state,
         clickedArticle: action.payload,
+      };
+    case "SET_ARTICLE":
+      return {
+        ...state,
+        previousArticleClick: action.payload,
       };
     default:
       return { ...state };

@@ -1,19 +1,26 @@
 import React from "react";
 
 import { Highlight } from "react-instantsearch-dom";
+import { useDispatch } from "react-redux";
+
+import {setPurchaseArticle} from "../actions/clickedArticle"
 
 const PreviousPurchasesCarousel = () => {
+  const dispatch = useDispatch();
   const previousPurchases = JSON.parse(
     localStorage.getItem("purchaseArticles")
   );
   return (
     <div>
       <div className="hits-wrapper">
-        <h1>Welcome Back Alex</h1>
+        <h3 className="title-carousel">Welcome Back Alex</h3>
         <ul className="hits-list hits-list-modal">
           {previousPurchases
             ? previousPurchases.map((item) => (
-                <li key={item.objectID} className="hit-list" onClick={() => {}}>
+                <li key={item.objectID} className="hit-list" onClick={() => {
+                  console.log('ITEM', item);
+                  dispatch(setPurchaseArticle(item))
+                }}>
                   <div className="image-wrapper">
                     <img src={item.image} alt="" />
                   </div>

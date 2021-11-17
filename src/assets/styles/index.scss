@@ -48,16 +48,30 @@ body {
       font-size: 0.9rem;
     }
   }
-  .cart-number {
+  .search-cart {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    .cart-number {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .logo-brand{
+    display: flex;
+    img{
+      width: 60px;
+      height: 70px;
+      margin-right: 1rem;
+    }
   }
 }
 
 .hits-wrapper {
   margin: 5rem auto;
   width: 75%;
+  .title-carousel {
+    margin-left: 10rem;
+  }
   .hits-list {
     list-style: none;
     margin: 0 auto;
@@ -187,6 +201,7 @@ body {
   padding: 1 rem 0 rem;
   list-style-type: none;
   display: flex !important;
+  cursor: pointer;
 }
 
 .button {
