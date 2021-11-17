@@ -9,8 +9,7 @@ import { CustomHits } from "./components/Hits";
 import { Configure, Pagination } from "react-instantsearch-dom";
 // Import components
 import Modal from "./components/CartModal";
-import PreviousPurchasesCarousel from "./components/PreviousPurchasesCarousel"
-
+import PreviousPurchasesCarousel from "./components/PreviousPurchasesCarousel";
 
 import { showModal } from "./actions/showModal";
 import { getArticle } from "./actions/clickedArticle";
@@ -21,24 +20,31 @@ const searchClient = algoliasearch(appId, apiKey);
 
 function App({ refine }) {
   const { cart } = useSelector((state) => state.getCart);
+  const previousPurchases = JSON.parse(
+    localStorage.getItem("purchaseArticles")
+  );
   const dispatch = useDispatch();
   const { modalShow } = useSelector((state) => state.getModal);
 
   return (
     <>
-    <PreviousPurchasesCarousel/>
+      {previousPurchases ? <PreviousPurchasesCarousel /> : ""}
       <div className="app-container">
         {modalShow ? <Modal /> : ""}
         <div className="autocomplete-container">
-          <h1 onClick={()=>{
-            dispatch(showModal(false));
-            dispatch(getArticle(''));
-            refine('')
-          }}>Recent Articles Buy</h1>
+          <h1
+            onClick={() => {
+              dispatch(showModal(false));
+              dispatch(getArticle(""));
+              refine("");
+            }}
+          >
+           Gorcery Articles
+          </h1>
           <CustomAutocomplete />
           <div className="cart-number">
             <svg
-            style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer" }}
               onClick={() => {
                 dispatch(showModal(true));
               }}

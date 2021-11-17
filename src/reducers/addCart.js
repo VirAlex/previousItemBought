@@ -9,6 +9,11 @@ const getCart = (state = initState, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
+      case "DELETE_CART":
+        return {
+          ...state,
+          cart: []
+        }
     default:
       return { ...state };
   }
