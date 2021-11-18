@@ -72,11 +72,11 @@ function App({ refine }) {
         {previousPurchases ? <PreviousPurchasesCarousel /> : ""}
         {previousArticleClick ? (
           <Configure
-            hitsPerPage={8}
+            hitsPerPage={12}
             filters={`categories.lvl1:'${previousArticleClick.categories.lvl1}'`}
           />
         ) : (
-          <Configure hitsPerPage={8} />
+          <Configure hitsPerPage={12} />
         )}
         <CustomHits />
       </div>

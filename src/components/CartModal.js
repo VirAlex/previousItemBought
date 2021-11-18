@@ -31,7 +31,7 @@ const CartModal = () => {
         </p>
       </div>
       <div className="hits-wrapper">
-        <ul className="hits-list">
+        <ul className="hits-list cart-modal">
           {cart.map((hit) => (
             <dispatchEvent
               key={hit.objectID}
