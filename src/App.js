@@ -75,15 +75,15 @@ function App() {
         {previousPurchases ? <PreviousPurchasesCarousel /> : ""}
         {previousArticleClick && !clickedLogo ? (
           <Configure
-            hitsPerPage={12}
+            hitsPerPage={20}
             filters={`categories.lvl1:'${previousArticleClick.categories.lvl1}'`}
           />
         ) : (
-          <Configure hitsPerPage={12} />
+          <Configure hitsPerPage={20} />
         )}
         {categories ? (
           <Configure
-            hitsPerPage={12}
+            hitsPerPage={20}
             filters={`categories.lvl0:'${categories.lvl0}'`}
           />
         ) : (
