@@ -19,6 +19,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
             type="search"
             value={clickedArticle ? clickedArticle : currentRefinement}
             onChange={(event) => {
+              dispatch(clickLogo(false));
               setClick(true);
               dispatch(getArticle(""));
               refine(event.currentTarget.value);
@@ -32,7 +33,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
         </li>
         {hits.map((hit) => (
           <li
-            className={`homepage-wrapper ${click ? "display" : "remove"}`}
+            className={`homepage-wrapper ${click && clickLogo ? "display" : "remove"}`}
             key={hit.objectID}
             onClick={(e) => {
               dispatch(getArticle(hit.DISPLAY_NAME));
