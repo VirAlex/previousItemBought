@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Highlight, connectHits } from "react-instantsearch-dom";
 import { useDispatch } from "react-redux";
 import { getArticleCart } from "../actions/getCart";
@@ -16,6 +16,7 @@ const Hits = ({ hits }) => {
       },
     },
   };
+  const [articlePurchase, setArticlePurchase] = useState([]);
   const dispatch = useDispatch();
   return (
     <AnimateSharedLayout>
@@ -29,7 +30,6 @@ const Hits = ({ hits }) => {
               initial="hidden"
               animate="show"
               className="hit-list"
-              onClick={() => {}}
             >
               <div class="card">
                 <img src={hit.IMAGE} alt="" />
@@ -39,11 +39,19 @@ const Hits = ({ hits }) => {
                 {/* <span class="card__description">Summer outfits</span> */}
                 <div class="card__shop">
                   <span class="card__shop__price">£{hit.PRICE_INT}</span>
-                  <button 
-                  onClick={()=>{
-                    console.log("E")
-                  }}
-                  class="card__shop__action">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log("HIT", hit.PRODUCT_ID);
+                      dispatch(getArticleCart(hit));
+                      setArticlePurchase([...articlePurchase, hit.PRODUCT_ID]);
+                    }}
+                    className={`${
+                      articlePurchase.includes(hit.PRODUCT_ID)
+                        ? "card__shop__bought"
+                        : "card__shop__action"
+                    }`}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
