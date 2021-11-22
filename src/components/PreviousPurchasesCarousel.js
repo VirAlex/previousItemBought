@@ -2,8 +2,9 @@ import React from "react";
 
 import { Highlight } from "react-instantsearch-dom";
 import { useDispatch } from "react-redux";
-
-import {setPurchaseArticle} from "../actions/clickedArticle"
+// Import actions from redux
+import { setPurchaseArticle } from "../actions/clickedArticle";
+import { clickLogo } from "../actions/clickLogo";
 
 const PreviousPurchasesCarousel = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,14 @@ const PreviousPurchasesCarousel = () => {
         <ul className="hits-list hits-list-modal">
           {previousPurchases
             ? previousPurchases.map((item) => (
-                <li key={item.objectID} className="hit-list" onClick={() => {
-                  console.log('ITEM', item);
-                  dispatch(setPurchaseArticle(item))
-                }}>
+                <li
+                  key={item.objectID}
+                  className="hit-list"
+                  onClick={() => {
+                    dispatch(setPurchaseArticle(item));
+                    dispatch(clickLogo(false));
+                  }}
+                >
                   <div className="image-wrapper">
                     <img src={item.IMAGE} alt="" />
                   </div>
@@ -30,7 +35,9 @@ const PreviousPurchasesCarousel = () => {
                       <h3>
                         <Highlight hit={item} attribute="DISPLAY_NAME" />
                       </h3>
-                      <p>{item.PRICE_INT !== null ? `$ ${item.PRICE_INT}` : ""}</p>
+                      <p>
+                        {item.PRICE_INT !== null ? `$ ${item.PRICE_INT}` : ""}
+                      </p>
                     </div>
                   </div>
                 </li>

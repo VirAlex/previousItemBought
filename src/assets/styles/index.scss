@@ -59,6 +59,7 @@ body {
   .logo-brand {
     display: flex;
     img {
+      cursor: pointer;
       width: 60px;
       height: 70px;
       margin-right: 1rem;
@@ -225,6 +226,6 @@ body {
   }
 }
 
-.cart-modal{
-    grid-template-columns: 1fr 1fr 1fr !important;
+.cart-modal {
+  grid-template-columns: 1fr 1fr 1fr !important;
 }

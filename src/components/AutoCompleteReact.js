@@ -3,7 +3,9 @@ import { useState } from "react";
 import { connectAutoComplete } from "react-instantsearch-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+// Import actions from redux
 import { getArticle } from "../actions/clickedArticle";
+import { clickLogo } from "../actions/clickLogo";
 
 const Autocomplete = ({ hits, currentRefinement, refine }) => {
   const { clickedArticle } = useSelector((state) => state.getArticle);
@@ -22,6 +24,7 @@ const Autocomplete = ({ hits, currentRefinement, refine }) => {
               refine(event.currentTarget.value);
             }}
             onClick={() => {
+              dispatch(clickLogo(true));
               // console.log("CLICK", click);
               // setClick(!click);
             }}

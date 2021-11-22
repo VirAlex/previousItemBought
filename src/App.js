@@ -13,21 +13,21 @@ import PreviousPurchasesCarousel from "./components/PreviousPurchasesCarousel";
 
 import logo from "./assets/images/logo.png";
 
+// Import actions from redux
 import { showModal } from "./actions/showModal";
 import { getArticle } from "./actions/clickedArticle";
+import { clickLogo } from "./actions/clickLogo";
 
-const appId = "latency";
-const apiKey = "6be0576ff61c053d5f9a3225e2a90f76";
-const searchClient = algoliasearch(appId, apiKey);
-
-function App({ refine }) {
-  const { cart } = useSelector((state) => state.getCart);
+function App() {
   const previousPurchases = JSON.parse(
     localStorage.getItem("purchaseArticles")
   );
   const dispatch = useDispatch();
+  // Import state from redux
+  const { cart } = useSelector((state) => state.getCart);
   const { modalShow } = useSelector((state) => state.getModal);
   const { previousArticleClick } = useSelector((state) => state.getArticle);
+  const { clickedLogo } = useSelector((state) => state.modifClickLogo);
 
   return (
     <>
@@ -35,16 +35,16 @@ function App({ refine }) {
         {modalShow ? <Modal /> : ""}
         <div className="autocomplete-container">
           <div className="logo-brand">
-            <img src={logo} alt="" />
-            <h1
+            <img
               onClick={() => {
                 dispatch(showModal(false));
                 dispatch(getArticle(""));
-                refine("");
+                dispatch(clickLogo(true));
               }}
-            >
-              Gorcery Articles
-            </h1>
+              src={logo}
+              alt=""
+            />
+            <h1>Gorcery Articles</h1>
           </div>
           <div className="search-cart">
             <CustomAutocomplete />
@@ -70,7 +70,7 @@ function App({ refine }) {
           </div>
         </div>
         {previousPurchases ? <PreviousPurchasesCarousel /> : ""}
-        {previousArticleClick ? (
+        {previousArticleClick && !clickedLogo ? (
           <Configure
             hitsPerPage={12}
             filters={`categories.lvl1:'${previousArticleClick.categories.lvl1}'`}
