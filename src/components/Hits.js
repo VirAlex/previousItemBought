@@ -39,7 +39,11 @@ const Hits = ({ hits }) => {
                 {/* <span class="card__description">Summer outfits</span> */}
                 <div class="card__shop">
                   <span class="card__shop__price">£{hit.PRICE_INT}</span>
-                  <button class="card__shop__action">
+                  <button 
+                  onClick={()=>{
+                    console.log("E")
+                  }}
+                  class="card__shop__action">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19"
