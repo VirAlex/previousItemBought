@@ -64,6 +64,15 @@ body {
       height: 70px;
       margin-right: 1rem;
     }
+    h1 {
+      background-image: linear-gradient(
+        221deg,
+        #8743ff,
+        #4136f1 60%
+      ) !important;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
 
@@ -72,6 +81,9 @@ body {
   width: 100%;
   .title-carousel {
     margin-left: 10rem;
+    background-image: linear-gradient(221deg, #8743ff, #4136f1 60%) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .hits-list {
     list-style: none;
@@ -90,6 +102,7 @@ body {
       padding: 1rem;
       cursor: pointer;
       border: 1px solid #f2f2f2;
+      background-color: #fff;
       .image-wrapper {
         text-align: center;
         img {
@@ -122,8 +135,168 @@ body {
           }
         }
       }
+      .button-show-more {
+        background-color: rgb(207, 200, 200);
+        color: grey;
+        border: none;
+        padding: 1rem;
+        transition: 0.5s;
+        cursor: pointer;
+        border-radius: 2px;
+        &:hover {
+          background-color: grey;
+          color: white;
+          transition: 0.5s;
+        }
+      }
     }
   }
+  .cards {
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    h2 {
+      width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hit-list {
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}
+// Hits Card$*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #171717;
+}
+
+:root {
+  --secondary: linear-gradient(221deg, #8743ff, #4136f1 60%);
+  --tertiary: linear-gradient(221deg, #43ff62, #a0f136 60%);
+  --body: #eaf2ff;
+  --card: #fff;
+  --text: #000;
+  --price: #4136f1;
+}
+body {
+  background: var(--body);
+  transition: background 0.3s;
+  gap: 20px;
+  &.dark {
+    --body: #171717;
+    --text: #fff;
+    --card: #0d0d0d;
+  }
+}
+.theme-toggle {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: var(--secondary);
+  transition: background 0.3s;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+}
+.card {
+  height: 240px;
+  width: 180px;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 10px;
+  font-family: sans-serif;
+  display: flex;
+  color: var(--text);
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s, background 0.3s;
+  &:hover {
+    transform: scale(1.09);
+  }
+  & img {
+    width: 160px;
+    height: 120px;
+    border-radius: 14px;
+    object-fit: contain;
+  }
+  &__title {
+    color: var(--text);
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s;
+    .ais-Highlight-highlighted {
+      background-image: linear-gradient(
+        221deg,
+        #8743ff,
+        #4136f1 60%
+      ) !important;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  &__description {
+    margin-top: 5px;
+    display: block;
+    font-size: 15px;
+    opacity: 0.6;
+    transition: color 0.3s;
+  }
+  &__shop {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__price {
+      color: var(--price);
+    }
+    &__action {
+      height: 40px;
+      width: 40px;
+      outline: none;
+      border: none;
+      background: var(--secondary);
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: auto;
+      & span {
+        color: #fff;
+        font-size: 26px;
+      }
+    }
+  }
+}
+.card__shop__bought{
+  background: var(--tertiary);
+  height: 40px;
+  width: 40px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: auto;
 }
 
 .ais-Pagination {

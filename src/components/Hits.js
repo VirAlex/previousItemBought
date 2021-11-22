@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Highlight, connectHits } from "react-instantsearch-dom";
 import { useDispatch } from "react-redux";
 import { getArticleCart } from "../actions/getCart";
@@ -16,12 +16,13 @@ const Hits = ({ hits }) => {
       },
     },
   };
+  const [articlePurchase, setArticlePurchase] = useState([]);
   const dispatch = useDispatch();
   return (
     <AnimateSharedLayout>
       <div className="hits-wrapper">
-      <h3 className="title-carousel">Our Products</h3>
-        <ul className="hits-list">
+        <h3 className="title-carousel">Our Products</h3>
+        <div className="cards">
           {hits.map((hit) => (
             <motion.li
               key={hit.objectID}
@@ -29,49 +30,57 @@ const Hits = ({ hits }) => {
               initial="hidden"
               animate="show"
               className="hit-list"
-              onClick={() => {}}
             >
-              <div className="image-wrapper">
+              <div class="card">
                 <img src={hit.IMAGE} alt="" />
-              </div>
-              <div className="infos-price">
-                <div className="weight__wrapper">
-                  {/* <svg viewBox="0 0 35 23" className="Hit-list__icon">
-                  <path
-                    id="asda_fav_list_1"
-                    d="M7.02 2C7 2.344 7 2.685 7 3h6c0-.315 0-.656-.02-1H18c1 0 2 .784 2 1.667v17.667C20 22.167 19 23 18 23H2c-1 0-2-.833-2-1.666V3.667C0 2.833 1 2 2 2h5.02zM12 2H8c0-1 1-2 2-2s2 1 2 2zM7 17v2h10v-2H7zm-4-5v2h2v-2H3zm0-5v2h2V7H3zm0 10v2h2v-2H3zm4-5v2h10v-2H7zm0-5v2h10V7H7z"
-                  ></path>
-                  <path
-                    id="asda_fav_list_2"
-                    d="M24 21c-1.818-1.8-10-7.65-10-12.6C14 5.7 15.818 3 19 3c2 0 4 .82 5 3.295C25 3.82 27 3 29 3c3.182 0 5 2.7 5 5.4 0 4.95-8.182 10.8-10 12.6z"
-                  ></path>
-                  <g fill="none">
-                    <use fill="#3d3d3d"></use>
-                    <use fill="#FFF" stroke="#3d3d3d" strokeWidth="1.9"></use>
-                  </g>
-                </svg> */}
-                  <p className="weight__text">£{hit.PRICE_INT}</p>
-                </div>
-                <div className="infos">
-                  <h3>
-                    <Highlight hit={hit} attribute="DISPLAY_NAME" />
-                  </h3>
-                  <div className="button">
-                    <button
-                      className="button-buy-me"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(getArticleCart(hit));
-                      }}
+                <h2 class="card__title">
+                  <Highlight hit={hit} attribute="DISPLAY_NAME" />
+                </h2>
+                {/* <span class="card__description">Summer outfits</span> */}
+                <div class="card__shop">
+                  <span class="card__shop__price">£{hit.PRICE_INT}</span>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log("HIT", hit.PRODUCT_ID);
+                      dispatch(getArticleCart(hit));
+                      setArticlePurchase([...articlePurchase, hit.PRODUCT_ID]);
+                    }}
+                    className={`${
+                      articlePurchase.includes(hit.PRODUCT_ID)
+                        ? "card__shop__bought"
+                        : "card__shop__action"
+                    }`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="19"
+                      height="19"
+                      viewBox="0 0 14.002 16"
                     >
-                      BUY ME
-                    </button>
-                  </div>
+                      <g id="Bag" transform="translate(0.001)">
+                        <path
+                          id="Combined_Shape"
+                          data-name="Combined Shape"
+                          d="M10.235,12H3.786A3.842,3.842,0,0,1,.733,10.958,4.283,4.283,0,0,1,.082,7.452L.687,2.5C.952.933,1.838,0,3.058,0h7.9a2.045,2.045,0,0,1,1.422.585A3.547,3.547,0,0,1,13.334,2.5l.6,4.956A4.164,4.164,0,0,1,13.2,10.87,3.791,3.791,0,0,1,10.235,12Zm-.99-9.337a.71.71,0,0,0-.688.728.688.688,0,1,0,1.374,0A.709.709,0,0,0,9.245,2.663Zm-4.5,0a.71.71,0,0,0-.688.728.689.689,0,1,0,1.375,0A.71.71,0,0,0,4.742,2.663Z"
+                          transform="translate(0 4)"
+                          fill="#fff"
+                        />
+                        <path
+                          id="Path_34167"
+                          d="M7.979,3.819A.4.4,0,0,1,7.944,4H6.795a.519.519,0,0,1-.035-.181,2.787,2.787,0,0,0-5.574,0,.519.519,0,0,1,0,.181H.008a.519.519,0,0,1,0-.181A4,4,0,0,1,8,3.819Z"
+                          transform="translate(3)"
+                          fill="#fff"
+                          opacity="0.4"
+                        />
+                      </g>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </motion.li>
           ))}
-        </ul>
+        </div>
       </div>
     </AnimateSharedLayout>
   );

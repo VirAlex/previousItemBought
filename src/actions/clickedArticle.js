@@ -11,3 +11,11 @@ export const setPurchaseArticle = (value) => (dispatch) => {
     payload: value,
   });
 };
+
+export const setCategories = (value) => (dispatch) => {
+  dispatch({
+    type: "SET_CATEGORIES",
+    payload: value,
+  });
+};
+

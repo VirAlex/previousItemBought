@@ -17,6 +17,7 @@ import logo from "./assets/images/logo.png";
 import { showModal } from "./actions/showModal";
 import { getArticle } from "./actions/clickedArticle";
 import { clickLogo } from "./actions/clickLogo";
+import { setCategories } from "./actions/clickedArticle";
 
 function App() {
   const previousPurchases = JSON.parse(
@@ -28,6 +29,7 @@ function App() {
   const { modalShow } = useSelector((state) => state.getModal);
   const { previousArticleClick } = useSelector((state) => state.getArticle);
   const { clickedLogo } = useSelector((state) => state.modifClickLogo);
+  const { categories } = useSelector((state) => state.getArticle);
 
   return (
     <>
@@ -40,6 +42,7 @@ function App() {
                 dispatch(showModal(false));
                 dispatch(getArticle(""));
                 dispatch(clickLogo(true));
+                dispatch(setCategories(''))
               }}
               src={logo}
               alt=""
@@ -72,11 +75,19 @@ function App() {
         {previousPurchases ? <PreviousPurchasesCarousel /> : ""}
         {previousArticleClick && !clickedLogo ? (
           <Configure
-            hitsPerPage={12}
+            hitsPerPage={20}
             filters={`categories.lvl1:'${previousArticleClick.categories.lvl1}'`}
           />
         ) : (
-          <Configure hitsPerPage={12} />
+          <Configure hitsPerPage={20} />
+        )}
+        {categories ? (
+          <Configure
+            hitsPerPage={20}
+            filters={`categories.lvl0:'${categories.lvl0}'`}
+          />
+        ) : (
+          ""
         )}
         <CustomHits />
       </div>
